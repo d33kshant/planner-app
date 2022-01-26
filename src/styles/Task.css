@@ -16,6 +16,7 @@
 	cursor: pointer;
 	position: relative;
 	min-height: 20px;
+	margin-bottom: 8px;
 }
 
 .task-container:hover {
