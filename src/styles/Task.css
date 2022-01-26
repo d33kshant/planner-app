@@ -1,0 +1,81 @@
+:root {
+	--color-green: #61bd4f;
+	--color-blue: #0079bf;
+	--color-red: #eb5a46;
+	--color-orange: #ff9f1a;
+	--color-yellow: #f2d600;
+}
+
+.task-container {
+	background: white;
+	padding: 8px;
+	border-radius: 4px;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+	font-family: inherit;
+	font-size: 14px;
+	cursor: pointer;
+	position: relative;
+}
+
+.task-container:hover {
+	background: rgba(255, 255, 255, 0.6);
+}
+
+.task-edit-button {
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	padding: 8px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	display: none;
+	z-index: 5;
+}
+
+.task-container:hover .task-edit-button {
+	display: block;
+	background: rgba(255, 255, 255, 0.6);
+}
+
+.task-container:hover .task-edit-button:hover {
+	background-color: #DEDEE0;
+}
+
+.labels-list {
+	padding-bottom: 4px;
+	display: flex;
+	gap: 4px;
+}
+
+.label-card {
+	border-radius: 16px;
+	width: 32px;
+	height: 8px;
+	background-color: var(--color-blue);
+}
+
+.label-red {
+	background-color: var(--color-red);
+}
+
+.label-blue {
+	background-color: var(--color-blue);
+}
+
+.label-green {
+	background-color: var(--color-green);
+}
+
+.label-orange {
+	background-color: var(--color-orange);
+}
+
+.label-yellow {
+	background-color: var(--color-yellow);
+}
+
+.task-body {
+	color: #172b4d;
+	width: 100%;
+}
