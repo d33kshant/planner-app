@@ -3,12 +3,16 @@
 	background: #ebecf0;
 	border-radius: 4px;
 	padding: 4px;
+	height: max-content;
 }
 
 .board-header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	padding: 4px;
+	margin-bottom: 4px;
+	gap: 8px;
 }
 
 .board-title {
@@ -17,7 +21,7 @@
 	font-family: inherit;
 	font-weight: 600;
 	cursor: default;
-	padding: 0 8px;
+	padding: 0 4px;
 	color: rgba(0, 0, 0, 0.8);
 	outline: none;
 }
@@ -37,16 +41,18 @@
 .tasks-list {
 	display: flex;
 	flex-direction: column;
-	padding: 4px;
+	padding: 0 4px;
 	gap: 8px;
 }
 
 .add-card-button {
 	width: calc(100% - 8px);
 	margin: 4px;
+	margin-top: 8px;
 	padding: 4px 8px;
 	box-sizing: border-box;
 	font-family: inherit;
+	font-size: 14px;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
@@ -59,40 +65,4 @@
 
 .add-card-button:hover {
 	background: rgba(0, 0, 0, 0.1);
-}
-
-.add-card-form {
-	display: flex;
-	flex-direction: column;
-	padding: 4px;
-	gap: 8px;
-}
-
-.new-card-input {
-	background: white;
-	border: none;
-	outline: none;
-	padding: 8px;
-	border-radius: 4px;
-	font-family: inherit;
-	font-size: 14px;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-	resize: none;
-	overflow: visible;
-	word-wrap: break-word;
-}
-
-.new-card-button {
-	width: fit-content;
-	border: none;
-	border-radius: 4px;
-	color: white;
-	font-family: inherit;
-	background: #0079bf;
-	padding: 8px;
-	cursor: pointer;
-}
-
-.new-card-button:hover {
-	background: #036ba7;
 }
