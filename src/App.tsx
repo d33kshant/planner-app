@@ -1,9 +1,19 @@
 import React from 'react'
+import AppBar from './components/AppBar'
+import Board from './components/Board'
 import './styles/App.css'
 
-function App() {
+const App: React.FC = () => {
+  
   return (
-    <div>Hello World!</div>
+    <>
+    <AppBar />
+    <div className="boards-container">
+      <Board title="To Do"/>
+      <Board title="Doing"/>
+      <Board title="Done"/>
+    </div>
+    </>
   )
 }
 
