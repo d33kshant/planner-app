@@ -5,9 +5,10 @@ import "../styles/Task.css"
 type Props = {
 	value: string,
 	draggableId: number,
+	labels: string[]
 }
 
-const Task: React.FC<Props> = ({ value, draggableId }) => {
+const Task: React.FC<Props> = ({ value, draggableId, labels }) => {
 
 	const [taskBody, setTaskBody] = useState<string>(value);
 
@@ -21,10 +22,9 @@ const Task: React.FC<Props> = ({ value, draggableId }) => {
 		<Draggable draggableId={draggableId.toString()} index={draggableId}>
 			{(provided)=>(
 				<div className="task-container" ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps}>
-					{/* <div className="labels-list">
-						<div className="label-card label-green"></div>
-						<div className="label-card label-blue"></div>
-					</div> */}
+					{ labels.length > 0 && <div className="labels-list">
+						{labels.map(label=><div className={`label-card label-${label}`}></div>)}
+					</div>}
 					<span 
 						className="task-body"
 						contentEditable={true}
