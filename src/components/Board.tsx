@@ -1,8 +1,9 @@
-import React, { useRef, useState } from "react"
+import React, { useState } from "react"
 import Task from "./Task"
 import "../styles/Board.css"
 import AddCard from "./AddCard"
 import { Droppable } from "react-beautiful-dnd"
+import TaskItem from "../types/TaskItem"
 
 type Props = {
 	title: string
@@ -13,9 +14,7 @@ const Board: React.FC<Props> = ({ title }) => {
 	const [boardTitle, setBoardTitle] = useState<string>(title);
 	const [isAddingTask, setIsAddingtask] = useState<boolean>(false);
 
-	const [tasks, setTasks] = useState<string[]>([]);
-
-	const inputRef = useRef<HTMLInputElement>(null)
+	const [tasks, setTasks] = useState<TaskItem[]>([]);
 
 	const onBoardTitleEdited: Function = (event: React.FocusEvent<HTMLSpanElement>) => {
 		const newTitle = event.currentTarget.innerText
@@ -25,12 +24,10 @@ const Board: React.FC<Props> = ({ title }) => {
 
 	const onAddCardClicked: Function = (event: React.MouseEvent<HTMLButtonElement>) => {
 		setIsAddingtask(true)
-		inputRef.current?.focus()
 	}
 
-	const onAddingTaskFinish: Function = (event: React.FocusEvent<HTMLSpanElement>) => {
-		const newTask = event.currentTarget.innerText
-		if (newTask) setTasks(prev => [...prev, newTask])
+	const addNewCard = (task: TaskItem) => {
+		if (task.body) setTasks([...tasks, task])
 		setIsAddingtask(false)
 	}
 
@@ -42,19 +39,19 @@ const Board: React.FC<Props> = ({ title }) => {
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /><circle cx="5" cy="12" r="1" /></svg>
 				</button>
 			</div>
-			<Droppable droppableId="title">
+			<Droppable droppableId={title}>
 				{(provided) =>
 				<div className="tasks-list" ref={provided.innerRef} {...provided.droppableProps}>
-					{tasks.map((task, index) => <Task draggableId={index} key={index} value={task} />)}
+					{tasks.map((task, index) => <Task draggableId={task.id} key={index} value={task.body} labels={task.labels} />)}
 					{provided.placeholder}
 					<div></div>
 				</div>}
 			</Droppable>
-			{isAddingTask && <AddCard onAction={onAddingTaskFinish} />}
-			<button className="add-card-button" onClick={(event) => onAddCardClicked(event)}>
-				{isAddingTask ? <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg> : <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>}
-				{isAddingTask ? "Cancel" : "Add a card"}
-			</button>
+			{isAddingTask && <AddCard onAddClicked={addNewCard} onCacelCliced={()=>{setIsAddingtask(false)}} />}
+			{ !isAddingTask && <button className="add-card-button" onClick={(event) => onAddCardClicked(event)}>
+				<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+				Add a card
+			</button>}
 		</div>
 	)
 }
