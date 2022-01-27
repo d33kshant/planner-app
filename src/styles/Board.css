@@ -1,9 +1,11 @@
 .board-container {
+	min-width: 300px;
 	width: 300px;
 	background: #ebecf0;
 	border-radius: 4px;
 	padding: 4px;
 	height: max-content;
+	box-sizing: border-box;
 }
 
 .board-header {
