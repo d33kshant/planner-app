@@ -42,7 +42,7 @@ const Board: React.FC<Props> = ({ title }) => {
 			<Droppable droppableId={title}>
 				{(provided) =>
 				<div className="tasks-list" ref={provided.innerRef} {...provided.droppableProps}>
-					{tasks.map((task, index) => <Task draggableId={task.id} key={index} value={task.body} labels={task.labels} />)}
+					{tasks.map((task, index) => <Task draggableId={task.id} draggableIndex={index} key={index} value={task.body} labels={task.labels} />)}
 					{provided.placeholder}
 					<div></div>
 				</div>}

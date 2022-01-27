@@ -5,10 +5,11 @@ import "../styles/Task.css"
 type Props = {
 	value: string,
 	draggableId: number,
+	draggableIndex: number,
 	labels: string[]
 }
 
-const Task: React.FC<Props> = ({ value, draggableId, labels }) => {
+const Task: React.FC<Props> = ({ value, draggableId, draggableIndex, labels }) => {
 
 	const [taskBody, setTaskBody] = useState<string>(value);
 
@@ -19,7 +20,7 @@ const Task: React.FC<Props> = ({ value, draggableId, labels }) => {
 	}
 
 	return (
-		<Draggable draggableId={draggableId.toString()} index={draggableId}>
+		<Draggable draggableId={draggableId.toString()} index={draggableIndex}>
 			{(provided)=>(
 				<div className="task-container" ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps}>
 					{ labels.length > 0 && <div className="labels-list">
