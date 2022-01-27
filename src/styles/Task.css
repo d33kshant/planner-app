@@ -45,7 +45,7 @@
 }
 
 .labels-list {
-	padding-bottom: 4px;
+	padding-bottom: 8px;
 	display: flex;
 	gap: 4px;
 }

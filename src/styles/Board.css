@@ -46,11 +46,6 @@
 	transition: height 0.8s ease;
 }
 
-.tasks-list div[data-rbd-placeholder-context-id] {
-	border-radius: 4px;
-	background: rgba(0, 0, 0, 0.1);
-}
-
 .add-card-button {
 	width: calc(100% - 8px);
 	margin: 4px;
