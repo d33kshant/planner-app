@@ -1,15 +1,9 @@
 import React, { useState } from "react"
-import { Draggable } from "react-beautiful-dnd";
+import { Draggable } from "react-beautiful-dnd"
 import "../styles/Task.css"
+import { TaskProps } from "../types/Props"
 
-type Props = {
-	value: string,
-	draggableId: number,
-	draggableIndex: number,
-	labels: string[]
-}
-
-const Task: React.FC<Props> = ({ value, draggableId, draggableIndex, labels }) => {
+const Task: React.FC<TaskProps> = ({ value, draggableId, draggableIndex, labels }) => {
 
 	const [taskBody, setTaskBody] = useState<string>(value);
 
@@ -24,7 +18,7 @@ const Task: React.FC<Props> = ({ value, draggableId, draggableIndex, labels }) =
 			{(provided)=>(
 				<div className="task-container" ref={provided.innerRef} {...provided.dragHandleProps} {...provided.draggableProps}>
 					{ labels.length > 0 && <div className="labels-list">
-						{labels.map(label=><div className={`label-card label-${label}`}></div>)}
+						{labels.map((label, index)=><div key={index} className={`label-card label-${label}`}></div>)}
 					</div>}
 					<span 
 						className="task-body"
