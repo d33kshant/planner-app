@@ -12,8 +12,11 @@ const App: React.FC = () => {
 	const onDragEnd = (result: DropResult) => {
 		const { source, destination } = result
 
-		if( !destination || (destination.droppableId === source.droppableId && destination.index === source.index ) )
+		if( !destination || (destination.droppableId === source.droppableId && destination.index === source.index ) ){
 			return
+		}
+
+		console.log(result)
 	}
 	
 	const addNewBoard = () => {
