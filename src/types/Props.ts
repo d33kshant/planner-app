@@ -5,7 +5,7 @@ export interface BoardProps {
 
 export interface TaskProps {
 	value: string,
-	draggableId: number,
+	draggableId: string,
 	draggableIndex: number,
 	labels: string[]
 }
