@@ -3,8 +3,8 @@ import Task from "./Task"
 import "../styles/Board.css"
 import AddCard from "./AddCard"
 import { Droppable } from "react-beautiful-dnd"
-import TaskItem from "../types/TaskItem"
 import { BoardProps } from "../types/Props"
+import TaskItem from "../types/TaskItem"
 
 const Board: React.FC<BoardProps> = ({ title, droppableId }) => {
 
@@ -28,8 +28,8 @@ const Board: React.FC<BoardProps> = ({ title, droppableId }) => {
 		setIsAddingtask(true)
 	}
 
-	const addNewCard = (task: TaskItem) => {
-		if (task.body) setTasks([...tasks, task])
+	const addNewCard = (body: string, labels: string[]) => {
+		if (body) setTasks([ ...tasks, { id: tasks.length, body, labels }])
 		setIsAddingtask(false)
 	}
 
@@ -44,7 +44,7 @@ const Board: React.FC<BoardProps> = ({ title, droppableId }) => {
 			<Droppable droppableId={droppableId.toString()}>
 				{(provided) =>
 				<div className="tasks-list" ref={provided.innerRef} {...provided.droppableProps}>
-					{tasks.map((task, index) => <Task draggableId={task.id} draggableIndex={index} key={index} value={task.body} labels={task.labels} />)}
+					{tasks.map((task, index) => <Task draggableId={`${droppableId}-${index}`} draggableIndex={index} key={index} value={task.body} labels={task.labels} />)}
 					{provided.placeholder}
 					<div></div>
 				</div>}
