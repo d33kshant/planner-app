@@ -46,6 +46,7 @@
 	flex-direction: column;
 	padding: 0 4px;
 	transition: height 0.8s ease;
+	min-height: 1px;
 }
 
 .add-card-button {
